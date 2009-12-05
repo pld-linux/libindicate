@@ -12,6 +12,7 @@ Patch0:		%{name}-am.patch
 URL:		https://launchpad.net/libindicate/
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	libtool
 Requires(post,preun):	/sbin/chkconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -51,6 +52,7 @@ Statyczna biblioteka indicate.
 %patch0 -p0
 
 %build
+%{__libtoolize}
 %{__aclocal}
 %{__autoconf}
 %{__automake}
