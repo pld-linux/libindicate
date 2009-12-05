@@ -1,0 +1,11 @@
+--- Makefile.am.orig	2009-12-05 01:08:43.971618811 +0100
++++ Makefile.am	2009-12-05 01:09:03.653619602 +0100
+@@ -2,8 +2,6 @@
+ SUBDIRS = \
+ 	libindicate \
+ 	libindicate-gtk \
+-	examples \
+-	tests \
+ 	docs
+ 
+ EXTRA_DIST = \
