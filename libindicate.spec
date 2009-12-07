@@ -12,9 +12,14 @@ Patch0:		%{name}-am.patch
 URL:		https://launchpad.net/libindicate/
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	dbus-glib-devel
+BuildRequires:	gnome-common
+BuildRequires:	gnome-doc-utils
+BuildRequires:	gtk+2-devel
+BuildRequires:	gtk-doc-automake
 BuildRequires:	libtool
-BuildConflicts:	gir-repository-devel
-BuildConflicts:	gobject-introspection-devel
+BuildRequires:	libxml2-devel
+BuildRequires:	pkgconfig
 Requires(post,preun):	/sbin/chkconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -58,7 +63,8 @@ Statyczna biblioteka indicate.
 %{__aclocal}
 %{__autoconf}
 %{__automake}
-%configure
+%configure \
+	--disable-gobject-introspection
 %{__make}
 
 %install
