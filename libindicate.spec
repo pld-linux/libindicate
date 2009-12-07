@@ -13,10 +13,11 @@ URL:		https://launchpad.net/libindicate/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	dbus-glib-devel
+BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gnome-common
 BuildRequires:	gnome-doc-utils
 BuildRequires:	gtk+2-devel
-BuildRequires:	gtk-doc-automake
+BuildRequires:	gtk-doc
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel
 BuildRequires:	pkgconfig
@@ -54,6 +55,18 @@ Static indicate library.
 %description static -l pl.UTF-8
 Statyczna biblioteka indicate.
 
+%package apidocs
+Summary:	indicate library API documentation
+Summary(pl.UTF-8):	Dokumentacja API biblioteki indicate
+Group:		Documentation
+Requires:	gtk-doc-common
+
+%description apidocs
+indicate library API documentation.
+
+%description apidocs -l pl.UTF-8
+Dokumentacja API biblioteki indicate.
+
 %prep
 %setup -q
 %patch0 -p0
@@ -64,7 +77,9 @@ Statyczna biblioteka indicate.
 %{__autoconf}
 %{__automake}
 %configure \
-	--disable-gobject-introspection
+	--disable-gobject-introspection \
+	--enable-gtk-doc \
+	--with-html-dir=%{_gtkdocdir}
 %{__make}
 
 %install
@@ -100,3 +115,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_pkgconfigdir}/indicate-gtk.pc
 %attr(755,root,root) %{_pkgconfigdir}/indicate.pc
 %{_includedir}/libindicate-0.2
+
+%files apidocs
+%defattr(644,root,root,755)
+%{_gtkdocdir}/libindicate
