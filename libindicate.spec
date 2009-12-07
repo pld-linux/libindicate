@@ -3,7 +3,7 @@ Summary:	Libindicate
 Summary(pl.UTF-8):	Libindicate
 Name:		libindicate
 Version:	0.2.3
-Release:	2
+Release:	3
 License:	LGPL v2+
 Group:		Applications
 Source0:	http://launchpad.net/libindicate/0.2/0.2.3/+download/%{name}-%{version}.tar.gz
@@ -15,11 +15,12 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	dbus-glib-devel
 BuildRequires:	docbook-dtd412-xml
+BuildRequires:	gir-repository-devel
 BuildRequires:	gnome-common
 BuildRequires:	gnome-doc-utils
+BuildRequires:	gobject-introspection-devel
 BuildRequires:	gtk+2-devel
 BuildRequires:	gtk-doc
-BuildRequires:	gobject-introspection-devel
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel
 BuildRequires:	pkgconfig
