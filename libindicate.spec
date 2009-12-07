@@ -12,7 +12,7 @@ Patch0:		%{name}-am.patch
 URL:		https://launchpad.net/libindicate/
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	gir-repository-devel
+#BuildRequires:	gir-repository-devel
 BuildRequires:	libtool
 Requires(post,preun):	/sbin/chkconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
