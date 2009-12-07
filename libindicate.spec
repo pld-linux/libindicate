@@ -16,6 +16,7 @@ BuildRequires:	automake
 BuildRequires:	dbus-glib-devel
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gir-repository-devel
+BuildRequires:	glibc-misc
 BuildRequires:	gnome-common
 BuildRequires:	gnome-doc-utils
 BuildRequires:	gobject-introspection-devel
@@ -83,7 +84,9 @@ Dokumentacja API biblioteki indicate.
 %configure \
 	--enable-gtk-doc \
 	--with-html-dir=%{_gtkdocdir}
-%{__make} \
+
+# without -j1 introspection tries to link with system -lindicate
+%{__make} -j1 \
 	PKG_CONFIG_PATH=$(pwd)/libindicate:$(pwd)/libindicate-gtk
 
 %install
