@@ -96,24 +96,24 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) %ghost %{_libdir}/libindicate-gtk.so.1
-%attr(755,root,root) %{_libdir}/libindicate-gtk.so.1.0.0
+%attr(755,root,root) %{_libdir}/libindicate.so.3.*.*
 %attr(755,root,root) %ghost %{_libdir}/libindicate.so.3
-%attr(755,root,root) %{_libdir}/libindicate.so.3.0.2
+%attr(755,root,root) %{_libdir}/libindicate-gtk.so.1.*.*
+%attr(755,root,root) %ghost %{_libdir}/libindicate-gtk.so.1
 
 %files static
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libindicate-gtk.a
 %attr(755,root,root) %{_libdir}/libindicate.a
+%attr(755,root,root) %{_libdir}/libindicate-gtk.a
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libindicate-gtk.la
-%attr(755,root,root) %{_libdir}/libindicate-gtk.so
 %attr(755,root,root) %{_libdir}/libindicate.la
 %attr(755,root,root) %{_libdir}/libindicate.so
-%attr(755,root,root) %{_pkgconfigdir}/indicate-gtk.pc
+%attr(755,root,root) %{_libdir}/libindicate-gtk.la
+%attr(755,root,root) %{_libdir}/libindicate-gtk.so
 %attr(755,root,root) %{_pkgconfigdir}/indicate.pc
+%attr(755,root,root) %{_pkgconfigdir}/indicate-gtk.pc
 %{_includedir}/libindicate-0.2
 
 %files apidocs
