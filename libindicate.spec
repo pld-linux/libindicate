@@ -1,4 +1,4 @@
-
+%bcond_without	doc
 Summary:	Libindicate
 Summary(pl.UTF-8):	Libindicate
 Name:		libindicate
@@ -14,17 +14,19 @@ URL:		https://launchpad.net/libindicate/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	dbus-glib-devel
-BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gir-repository-devel
 BuildRequires:	glibc-misc
 BuildRequires:	gnome-common
 BuildRequires:	gnome-doc-utils
 BuildRequires:	gobject-introspection-devel
 BuildRequires:	gtk+2-devel
-BuildRequires:	gtk-doc
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel
 BuildRequires:	pkgconfig
+%if %{with doc}
+BuildRequires:	docbook-dtd412-xml
+BuildRequires:	gtk-doc
+%endif
 Requires(post,preun):	/sbin/chkconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -82,7 +84,7 @@ Dokumentacja API biblioteki indicate.
 %{__autoconf}
 %{__automake}
 %configure \
-	--enable-gtk-doc \
+	--%{?with_doc:en}%{!?with_doc:dis}able-gtk-doc \
 	--with-html-dir=%{_gtkdocdir}
 
 # without -j1 introspection tries to link with system -lindicate
@@ -127,6 +129,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/gir-1.0/Indicate-*.gir
 %{_datadir}/gir-1.0/IndicateGtk-*.gir
 
+%if %{with doc}
 %files apidocs
 %defattr(644,root,root,755)
 %{_gtkdocdir}/libindicate
+%endif
