@@ -20,9 +20,11 @@ BuildRequires:	gnome-common
 BuildRequires:	gnome-doc-utils
 BuildRequires:	gobject-introspection-devel
 BuildRequires:	gtk+2-devel
+BuildRequires:	gtk-doc-automake
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel
 BuildRequires:	pkgconfig
+BuildRequires:	rpmbuild(macros) >= 1.198
 %if %{with doc}
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gtk-doc
@@ -79,6 +81,9 @@ Dokumentacja API biblioteki indicate.
 %patch1 -p1
 
 %build
+%if %{with doc}
+%{__gtkdocize}
+%endif
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
