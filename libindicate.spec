@@ -3,7 +3,7 @@ Summary:	Libindicate
 Summary(pl.UTF-8):	Libindicate
 Name:		libindicate
 Version:	0.2.3
-Release:	6
+Release:	7
 License:	LGPL v2+
 Group:		Applications
 Source0:	http://launchpad.net/libindicate/0.2/0.2.3/+download/%{name}-%{version}.tar.gz
@@ -14,7 +14,6 @@ URL:		https://launchpad.net/libindicate/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	dbus-glib-devel
-BuildRequires:	gir-repository-devel
 BuildRequires:	glibc-misc
 BuildRequires:	gnome-common
 BuildRequires:	gnome-doc-utils
