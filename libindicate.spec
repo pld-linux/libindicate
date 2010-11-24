@@ -3,7 +3,7 @@ Summary:	Libindicate
 Summary(pl.UTF-8):	Libindicate
 Name:		libindicate
 Version:	0.2.3
-Release:	5
+Release:	6
 License:	LGPL v2+
 Group:		Applications
 Source0:	http://launchpad.net/libindicate/0.2/0.2.3/+download/%{name}-%{version}.tar.gz
