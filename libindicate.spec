@@ -3,7 +3,7 @@ Summary:	Libindicate
 Summary(pl.UTF-8):	Libindicate
 Name:		libindicate
 Version:	0.2.3
-Release:	7
+Release:	8
 License:	LGPL v2+
 Group:		Applications
 Source0:	http://launchpad.net/libindicate/0.2/0.2.3/+download/%{name}-%{version}.tar.gz
@@ -88,7 +88,8 @@ Dokumentacja API biblioteki indicate.
 %{__autoconf}
 %{__automake}
 %configure \
-	--%{?with_doc:en}%{!?with_doc:dis}able-gtk-doc \
+	--disable-silent-rules \
+	%{__enable_disable doc gtk-doc} \
 	--with-html-dir=%{_gtkdocdir}
 
 # without -j1 introspection tries to link with system -lindicate
@@ -100,6 +101,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -116,22 +119,20 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/girepository-1.0/Indicate-*.typelib
 %{_libdir}/girepository-1.0/IndicateGtk-*.typelib
 
-%files static
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libindicate.a
-%attr(755,root,root) %{_libdir}/libindicate-gtk.a
-
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libindicate.la
 %attr(755,root,root) %{_libdir}/libindicate.so
-%attr(755,root,root) %{_libdir}/libindicate-gtk.la
 %attr(755,root,root) %{_libdir}/libindicate-gtk.so
 %{_pkgconfigdir}/indicate.pc
 %{_pkgconfigdir}/indicate-gtk.pc
 %{_includedir}/libindicate-0.2
 %{_datadir}/gir-1.0/Indicate-*.gir
 %{_datadir}/gir-1.0/IndicateGtk-*.gir
+
+%files static
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libindicate.a
+%attr(755,root,root) %{_libdir}/libindicate-gtk.a
 
 %if %{with doc}
 %files apidocs
