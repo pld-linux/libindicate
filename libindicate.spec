@@ -1,15 +1,17 @@
+# TODO:
+# - python, sharp subpackages
 %bcond_without	doc
 Summary:	Libindicate
 Summary(pl.UTF-8):	Libindicate
 Name:		libindicate
-Version:	0.2.3
-Release:	8
+Version:	12.10.1
+Release:	1
 License:	LGPL v2+
 Group:		Applications
-Source0:	http://launchpad.net/libindicate/0.2/0.2.3/+download/%{name}-%{version}.tar.gz
-# Source0-md5:	c32f2cdd85534feea4a5ebd532ede641
+Source0:	https://launchpad.net/libindicate/12.10/%{version}/+download/%{name}-%{version}.tar.gz
+# Source0-md5:	aeed68ec8047a3325b4aa4aef38f010a
 Patch0:		%{name}-am.patch
-Patch1:		%{name}-gir.patch
+Patch1:		%{name}-doc.patch
 URL:		https://launchpad.net/libindicate/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -18,8 +20,9 @@ BuildRequires:	glibc-misc
 BuildRequires:	gnome-common
 BuildRequires:	gnome-doc-utils
 BuildRequires:	gobject-introspection-devel
-BuildRequires:	gtk+2-devel
+BuildRequires:	gtk+3-devel
 BuildRequires:	gtk-doc-automake
+BuildRequires:	libdbusmenu-devel
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel
 BuildRequires:	pkgconfig
@@ -76,7 +79,7 @@ Dokumentacja API biblioteki indicate.
 
 %prep
 %setup -q
-%patch0 -p0
+%patch0 -p1
 %patch1 -p1
 
 %build
@@ -112,27 +115,28 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libindicate.so.3.*.*
-%attr(755,root,root) %ghost %{_libdir}/libindicate.so.3
-%attr(755,root,root) %{_libdir}/libindicate-gtk.so.1.*.*
-%attr(755,root,root) %ghost %{_libdir}/libindicate-gtk.so.1
+%attr(755,root,root) %{_libdir}/libindicate.so.5.*.*
+%attr(755,root,root) %ghost %{_libdir}/libindicate.so.5
+%attr(755,root,root) %{_libdir}/libindicate-gtk3.so.3.*.*
+%attr(755,root,root) %ghost %{_libdir}/libindicate-gtk3.so.3
 %{_libdir}/girepository-1.0/Indicate-*.typelib
-%{_libdir}/girepository-1.0/IndicateGtk-*.typelib
+%{_libdir}/girepository-1.0/IndicateGtk3-*.typelib
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libindicate.so
-%attr(755,root,root) %{_libdir}/libindicate-gtk.so
-%{_pkgconfigdir}/indicate.pc
-%{_pkgconfigdir}/indicate-gtk.pc
-%{_includedir}/libindicate-0.2
+%attr(755,root,root) %{_libdir}/libindicate-gtk3.so
+%{_pkgconfigdir}/indicate-0.7.pc
+%{_pkgconfigdir}/indicate-gtk3-0.7.pc
+%{_includedir}/libindicate-0.7
+%{_includedir}/libindicate-gtk3-0.7
 %{_datadir}/gir-1.0/Indicate-*.gir
-%{_datadir}/gir-1.0/IndicateGtk-*.gir
+%{_datadir}/gir-1.0/IndicateGtk3-*.gir
 
 %files static
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libindicate.a
-%attr(755,root,root) %{_libdir}/libindicate-gtk.a
+%attr(755,root,root) %{_libdir}/libindicate-gtk3.a
 
 %if %{with doc}
 %files apidocs

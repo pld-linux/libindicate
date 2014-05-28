@@ -1,0 +1,14 @@
+--- libindicate-12.10.1/docs/reference/libindicate-docs.sgml~	2012-07-11 19:59:02.000000000 +0200
++++ libindicate-12.10.1/docs/reference/libindicate-docs.sgml	2014-05-28 09:02:41.746617079 +0200
+@@ -13,11 +13,6 @@
+ 	<xi:include href="xml/server.xml" />
+ </part>
+ 
+-<part id="subclass">
+-	<title>Subclasses for specific indicators</title>
+-	<xi:include href="xml/indicator-message.xml" />
+-</part>
+-
+ <part id="listeners">
+ 	<title>Classes for Listeners</title>
+ 	<xi:include href="xml/listener.xml" />
