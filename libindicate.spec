@@ -10,6 +10,9 @@
 # .NET bindings depend on gtk-sharp2 and use GTK+ 2.x variant of libindicate-gtk
 %undefine	with_dotnet
 %endif
+%ifarch x32
+%undefine	with_dotnet
+%endif
 Summary:	Libindicate library
 Summary(pl.UTF-8):	Biblioteka libindicate
 Name:		libindicate
