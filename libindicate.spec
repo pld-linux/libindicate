@@ -17,7 +17,7 @@ Summary:	Libindicate library
 Summary(pl.UTF-8):	Biblioteka libindicate
 Name:		libindicate
 Version:	12.10.1
-Release:	3
+Release:	4
 License:	LGPL v2+
 Group:		Libraries
 Source0:	https://launchpad.net/libindicate/12.10/%{version}/+download/%{name}-%{version}.tar.gz
@@ -354,12 +354,12 @@ cd ..
 rm -rf $RPM_BUILD_ROOT
 
 %if %{with gtk2}
-%{__make} -C build-gtk2 install \
+%{__make} -j1 -C build-gtk2 install \
 	DESTDIR=$RPM_BUILD_ROOT
 %endif
 
 %if %{with gtk3}
-%{__make} -C build-gtk3 install \
+%{__make} -j1 -C build-gtk3 install \
 	DESTDIR=$RPM_BUILD_ROOT
 %endif
 
