@@ -452,6 +452,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libindicate-gtk.a
 
+%if %{with dotnet}
 %files -n dotnet-indicate-gtk-sharp
 %defattr(644,root,root,755)
 %{_prefix}/lib/mono/gac/indicate-gtk-sharp
@@ -461,6 +462,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_prefix}/lib/mono/indicate-gtk
 %{_libdir}/indicate-gtk-sharp-0.1
 %{_pkgconfigdir}/indicate-gtk-sharp-0.1.pc
+%endif
 
 %files -n vala-libindicate-gtk
 %defattr(644,root,root,755)
