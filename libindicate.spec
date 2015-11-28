@@ -17,7 +17,7 @@ Summary:	Libindicate library
 Summary(pl.UTF-8):	Biblioteka libindicate
 Name:		libindicate
 Version:	12.10.1
-Release:	4
+Release:	5
 License:	LGPL v2+
 Group:		Libraries
 Source0:	https://launchpad.net/libindicate/12.10/%{version}/+download/%{name}-%{version}.tar.gz
