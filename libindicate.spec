@@ -5,7 +5,7 @@
 %bcond_without	gtk3	# GTK+ 3.x version
 %bcond_without	dotnet	# .NET/Mono bindings
 %bcond_without	python	# Python bindings
-#
+
 %if %{without gtk2}
 # .NET bindings depend on gtk-sharp2 and use GTK+ 2.x variant of libindicate-gtk
 %undefine	with_dotnet
@@ -13,11 +13,12 @@
 %ifarch x32
 %undefine	with_dotnet
 %endif
+
 Summary:	Libindicate library
 Summary(pl.UTF-8):	Biblioteka libindicate
 Name:		libindicate
 Version:	12.10.1
-Release:	5
+Release:	6
 License:	LGPL v2+
 Group:		Libraries
 Source0:	https://launchpad.net/libindicate/12.10/%{version}/+download/%{name}-%{version}.tar.gz
@@ -30,8 +31,8 @@ BuildRequires:	automake
 BuildRequires:	dbus-glib-devel >= 0.76
 %{?with_dotnet:BuildRequires:	dotnet-gtk-sharp2-devel >= 2.12.1}
 BuildRequires:	gdk-pixbuf2-devel >= 2.12
-BuildRequires:	glibc-misc
 BuildRequires:	glib2-devel >= 1:2.18
+BuildRequires:	glibc-misc
 BuildRequires:	gnome-common
 BuildRequires:	gnome-doc-utils
 BuildRequires:	gobject-introspection-devel >= 0.6.7
@@ -167,6 +168,9 @@ Summary(pl.UTF-8):	API języka Vala do biblioteki libindicate
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Requires:	vala
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description -n vala-libindicate
 Vala API for libindicate library.
@@ -218,8 +222,8 @@ Summary:	indicate-gtk library for .NET
 Summary(pl.UTF-8):	Biblioteka indicate-gtk dla .NET
 Group:		Libraries
 Requires:	%{name}-gtk = %{version}-%{release}
-Requires:	dotnet-indicate-sharp = %{version}-%{release}
 Requires:	dotnet-gtk-sharp2 >= 2.12.1
+Requires:	dotnet-indicate-sharp = %{version}-%{release}
 
 %description -n dotnet-indicate-gtk-sharp
 indicate-gtk library for .NET.
@@ -232,8 +236,8 @@ Summary:	Development files for .NET indicate-gtk library
 Summary(pl.UTF-8):	Pliki programistyczne biblioteki .NET indicate-gtk
 Group:		Development/Libraries
 Requires:	dotnet-gtk-sharp2-devel >= 2.12.1
-Requires:	dotnet-indicate-sharp-devel = %{version}-%{release}
 Requires:	dotnet-indicate-gtk-sharp = %{version}-%{release}
+Requires:	dotnet-indicate-sharp-devel = %{version}-%{release}
 
 %description -n dotnet-indicate-gtk-sharp-devel
 Development files for .NET indicate-gtk library.
@@ -247,6 +251,9 @@ Summary(pl.UTF-8):	API języka Vala do biblioteki libindicate-gtk
 Group:		X11/Development/Libraries
 Requires:	%{name}-gtk-devel = %{version}-%{release}
 Requires:	vala-libindicate = %{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description -n vala-libindicate-gtk
 Vala API for libindicate-gtk library.
