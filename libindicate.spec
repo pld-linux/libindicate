@@ -18,13 +18,14 @@ Summary:	Libindicate library
 Summary(pl.UTF-8):	Biblioteka libindicate
 Name:		libindicate
 Version:	12.10.1
-Release:	6
+Release:	7
 License:	LGPL v2+
 Group:		Libraries
 Source0:	https://launchpad.net/libindicate/12.10/%{version}/+download/%{name}-%{version}.tar.gz
 # Source0-md5:	aeed68ec8047a3325b4aa4aef38f010a
 Patch0:		%{name}-am.patch
 Patch1:		%{name}-doc.patch
+Patch2:		mono4.patch
 URL:		https://launchpad.net/libindicate/
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake
@@ -317,6 +318,7 @@ API języka Vala do biblioteki libindicate-gtk3.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 %if %{with apidocs}

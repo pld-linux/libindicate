@@ -1,0 +1,11 @@
+--- libindicate-12.10.1/configure.ac~	2016-05-05 18:11:11.000000000 +0200
++++ libindicate-12.10.1/configure.ac	2016-05-05 18:12:09.249901316 +0200
+@@ -156,7 +156,7 @@
+       RUNTIME=mono
+    fi
+ 
+-   AC_PATH_PROG(CSC, gmcs, no)
++   AC_PATH_PROG(CSC, dmcs, no)
+    LIB_PREFIX=.so
+    LIB_SUFFIX=
+ fi
