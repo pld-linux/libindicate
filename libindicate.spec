@@ -18,7 +18,7 @@ Summary:	Libindicate library
 Summary(pl.UTF-8):	Biblioteka libindicate
 Name:		libindicate
 Version:	12.10.1
-Release:	7
+Release:	8
 License:	LGPL v2+
 Group:		Libraries
 Source0:	https://launchpad.net/libindicate/12.10/%{version}/+download/%{name}-%{version}.tar.gz
@@ -102,6 +102,9 @@ Summary:	libindicate library API documentation
 Summary(pl.UTF-8):	Dokumentacja API biblioteki libindicate
 Group:		Documentation
 Requires:	gtk-doc-common
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description apidocs
 libindicate library API documentation.
