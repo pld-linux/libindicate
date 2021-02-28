@@ -102,9 +102,7 @@ Summary:	libindicate library API documentation
 Summary(pl.UTF-8):	Dokumentacja API biblioteki libindicate
 Group:		Documentation
 Requires:	gtk-doc-common
-%if "%{_rpmversion}" >= "5"
 BuildArch:	noarch
-%endif
 
 %description apidocs
 libindicate library API documentation.
@@ -172,9 +170,7 @@ Summary(pl.UTF-8):	API języka Vala do biblioteki libindicate
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Requires:	vala
-%if "%{_rpmversion}" >= "5"
 BuildArch:	noarch
-%endif
 
 %description -n vala-libindicate
 Vala API for libindicate library.
@@ -255,9 +251,7 @@ Summary(pl.UTF-8):	API języka Vala do biblioteki libindicate-gtk
 Group:		X11/Development/Libraries
 Requires:	%{name}-gtk-devel = %{version}-%{release}
 Requires:	vala-libindicate = %{version}-%{release}
-%if "%{_rpmversion}" >= "5"
 BuildArch:	noarch
-%endif
 
 %description -n vala-libindicate-gtk
 Vala API for libindicate-gtk library.
