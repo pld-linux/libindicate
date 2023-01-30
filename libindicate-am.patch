@@ -26,18 +26,7 @@
  
  # libpyglib-2.0-python* doesn't have a pkgconfig unfortunately
 -INDICATE_PYTHON_LIBS+=" -lpyglib-2.0-python$PYTHON_VERSION"
-+INDICATE_PYTHON_LIBS+=" -lpyglib-2.0-python"
- 
- AC_SUBST(INDICATE_PYTHON_CFLAGS)
- AC_SUBST(INDICATE_PYTHON_LIBS)
---- libindicate-12.10.1/configure.ac~	2016-12-31 00:43:38.000000000 +0100
-+++ libindicate-12.10.1/configure.ac	2016-12-31 00:45:23.246139564 +0100
-@@ -216,7 +216,7 @@ PKG_CHECK_MODULES([INDICATE_PYTHON], [py
- )
- 
- # libpyglib-2.0-python* doesn't have a pkgconfig unfortunately
--INDICATE_PYTHON_LIBS+=" -lpyglib-2.0-python"
-+INDICATE_PYTHON_LIBS+=" -lpyglib-2.0-python2"
++INDICATE_PYTHON_LIBS="$INDICATE_PYTHON_LIBS -lpyglib-2.0-python2"
  
  AC_SUBST(INDICATE_PYTHON_CFLAGS)
  AC_SUBST(INDICATE_PYTHON_LIBS)

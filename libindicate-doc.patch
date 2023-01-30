@@ -12,3 +12,62 @@
  <part id="listeners">
  	<title>Classes for Listeners</title>
  	<xi:include href="xml/listener.xml" />
+--- libindicate-12.10.1/docs/reference/Makefile.am.orig	2012-07-11 19:59:02.000000000 +0200
++++ libindicate-12.10.1/docs/reference/Makefile.am	2023-01-30 06:17:39.817127714 +0100
+@@ -21,7 +21,7 @@ DOC_MAIN_SGML_FILE=$(DOC_MODULE)-docs.sg
+ DOC_SOURCE_DIR=../../libindicate
+ 
+ # Extra options to pass to gtkdoc-scangobj. Not normally needed.
+-SCANGOBJ_OPTIONS=--nogtkinit --type-init-func="g_type_init()"
++SCANGOBJ_OPTIONS=--type-init-func="g_type_init()"
+ 
+ # Extra options to supply to gtkdoc-scan.
+ # e.g. SCAN_OPTIONS=--deprecated-guards="GTK_DISABLE_DEPRECATED"
+@@ -37,7 +37,7 @@ MKTMPL_OPTIONS=
+ 
+ # Extra options to supply to gtkdoc-fixref. Not normally needed.
+ # e.g. FIXXREF_OPTIONS=--extra-dir=../gdk-pixbuf/html --extra-dir=../gdk/html
+-FIXXREF_OPTIONS=
++FIXXREF_OPTIONS=--module=$(DOC_MODULE)
+ 
+ # Used for dependencies. The docs will be rebuilt if any of these change.
+ # e.g. HFILE_GLOB=$(top_srcdir)/gtk/*.h
+--- libindicate-12.10.1/gtk-doc.local.make.orig	2012-07-11 19:59:02.000000000 +0200
++++ libindicate-12.10.1/gtk-doc.local.make	2023-01-30 06:22:28.946232193 +0100
+@@ -28,8 +28,8 @@ EXTRA_DIST = 				\
+ 	$(HTML_IMAGES)			\
+ 	$(DOC_MAIN_SGML_FILE)
+ 
+-DOC_STAMPS=scan-build.stamp tmpl-build.stamp sgml-build.stamp html-build.stamp \
+-	   $(srcdir)/tmpl.stamp $(srcdir)/sgml.stamp $(srcdir)/html.stamp
++DOC_STAMPS=scan-build.stamp sgml-build.stamp html-build.stamp \
++	   $(srcdir)/sgml.stamp $(srcdir)/html.stamp
+ 
+ SCANOBJ_FILES = 		 \
+ 	$(DOC_MODULE).args 	 \
+@@ -75,24 +75,9 @@ scan-build.stamp: $(HFILE_GLOB) $(CFILE_
+ $(DOC_MODULE)-decl.txt $(SCANOBJ_FILES) $(DOC_MODULE)-sections.txt $(DOC_MODULE)-overrides.txt: scan-build.stamp
+ 	@true
+ 
+-#### templates ####
+-
+-tmpl-build.stamp: $(DOC_MODULE)-decl.txt $(SCANOBJ_FILES) $(DOC_MODULE)-sections.txt $(DOC_MODULE)-overrides.txt
+-	@echo 'gtk-doc: Rebuilding template files'
+-	@-chmod -R u+w $(srcdir)
+-	cd $(srcdir) && gtkdoc-mktmpl --module=$(DOC_MODULE) $(MKTMPL_OPTIONS)
+-	touch tmpl-build.stamp
+-
+-tmpl.stamp: tmpl-build.stamp
+-	@true
+-
+-tmpl/*.sgml:
+-	@true
+-
+-
+ #### xml ####
+ 
+-sgml-build.stamp: tmpl.stamp $(HFILE_GLOB) $(CFILE_GLOB) $(DOC_MODULE)-sections.txt $(srcdir)/tmpl/*.sgml $(expand_content_files)
++sgml-build.stamp: $(HFILE_GLOB) $(CFILE_GLOB) $(DOC_MODULE)-sections.txt $(srcdir)/tmpl/*.sgml $(expand_content_files)
+ 	@echo 'gtk-doc: Building XML'
+ 	@-chmod -R u+w $(srcdir)
+ 	cd $(srcdir) && \

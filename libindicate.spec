@@ -51,7 +51,9 @@ BuildRequires:	python-devel >= 2.3.5
 BuildRequires:	python-pygobject-devel >= 0.22
 BuildRequires:	python-pygtk-devel >= 2:2.14.0
 %endif
+BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(macros) >= 1.219
+BuildRequires:	sed >= 4.0
 BuildRequires:	vala
 %if %{with doc}
 BuildRequires:	docbook-dtd412-xml
@@ -316,6 +318,11 @@ API języka Vala do biblioteki libindicate-gtk3.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+
+# avoid errors on glib deprecations
+%{__sed} -i -e 's/ -Werror//' \
+	libindicate/Makefile.am \
+	libindicate-gtk/Makefile.am
 
 %build
 %if %{with apidocs}
